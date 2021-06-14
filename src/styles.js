@@ -30,8 +30,8 @@ export const Left = styled.div`
   display: flex;
   flex-direction: column;
 
-  h2 {
-    margin: 0.67em 0;
+  h3 {
+    margin: 0.67em 0 0;
     line-height: 2em;
   }
 

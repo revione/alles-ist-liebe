@@ -13,33 +13,19 @@ import {
 import { ReactComponent as Separator1 } from './assets/separator1.svg'
 import { ReactComponent as Separator2 } from './assets/separator2.svg'
 import Leones from './assets/leones.png'
-
-const Data = {
-  spanish: {
-    left: {
-      title: 'Querida Familia',
-      paragraph: [
-        'Bienvenidos a nuestra fiesta de boda.',
-        'Queremos compartir con ustedes nuestra alegria y amor.',
-        'Los esperamos.'
-      ],
-      list: {
-        title: 'Lista de regalos:',
-        items: ['Plantas para casa', 'Dinero para Luna de miel']
-      }
-    }
-  },
-  english: {},
-  deutsche: {}
-}
+import Data from './Data'
+import useTitle from './helpers/useTitle'
 
 function App() {
-  const [Language, setLanguage] = useState('spanish')
+  const [Language, setLanguage] = useState('deutsche')
   const [data, setData] = useState({})
+  const title = useTitle()
 
   useEffect(() => {
     setData(Data[Language])
   }, [Language])
+
+  console.log(Data, data)
 
   if (Object.keys(data).length === 0) return <h1>Invitation</h1>
 
@@ -57,16 +43,10 @@ function App() {
 
       <MainContainer>
         <Left>
-          <h2>{data.left.title}</h2>
+          <h3>{title}</h3>
           {data.left.paragraph.map(text => (
             <p key={Math.random() * 10}>{text}</p>
           ))}
-
-          <ul>
-            {data.left.list.items.map(item => (
-              <li key={Math.random() * 10}>{item}</li>
-            ))}
-          </ul>
         </Left>
         <ContainerSeparator2>
           <Separator2 />
