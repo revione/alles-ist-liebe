@@ -1,8 +1,13 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Helmet } from 'react-helmet'
+import Select from 'react-select'
+// helpers
+import useTitle from './helpers/useTitle'
+import useData from './helpers/useData'
 
 import {
   Main,
+  ContainerSelect,
   MainContainer,
   Left,
   Right,
@@ -12,22 +17,22 @@ import {
 } from './styles'
 import { ReactComponent as Separator1 } from './assets/separator1.svg'
 import { ReactComponent as Separator2 } from './assets/separator2.svg'
+import { ReactComponent as DeutscheFlag } from './assets/flags/germany.svg'
+import { ReactComponent as ColombiaFlag } from './assets/flags/colombia.svg'
+import { ReactComponent as UKFlag } from './assets/flags/united-kingdom.svg'
 import Leones from './assets/leones.png'
-import Data from './Data'
-import useTitle from './helpers/useTitle'
+
+// const options = [
+//   { value: 'deutsche', label: <DeutscheFlag /> },
+//   { value: 'spanish', label: <ColombiaFlag /> },
+//   { value: 'english', label: <UKFlag /> }
+// ]
 
 function App() {
-  const [Language, setLanguage] = useState('deutsche')
-  const [data, setData] = useState({})
-  const title = useTitle()
+  const data = useData()
+  const { title } = useTitle()
 
-  useEffect(() => {
-    setData(Data[Language])
-  }, [Language])
-
-  console.log(Data, data)
-
-  if (Object.keys(data).length === 0) return <h1>Invitation</h1>
+  if (!data) return <h1>Invitation</h1>
 
   return (
     <Main>
@@ -41,9 +46,19 @@ function App() {
         />
       </Helmet>
 
+      {/* <ContainerSelect>
+        <Select
+          name='language-select'
+          options={options}
+          defaultValue={options[0]}
+          isSearchable={false}
+          onChange={e => setLanguage(e.value)}
+        />
+      </ContainerSelect> */}
+
       <MainContainer>
         <Left>
-          <h3>{title}</h3>
+          {title && <h3>{title}</h3>}
           {data.left.paragraph.map(text => (
             <p key={Math.random() * 10}>{text}</p>
           ))}

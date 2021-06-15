@@ -15,6 +15,17 @@ export const MainContainer = styled.div`
   height: fit-content;
 `
 
+export const ContainerSelect = styled.div`
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 100px;
+
+  svg {
+    width: 30px;
+  }
+`
+
 export const ContainerSeparator2 = styled.div`
   display: flex;
   align-items: center;

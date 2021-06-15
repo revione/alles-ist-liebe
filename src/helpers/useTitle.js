@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react'
+import { useMemo } from 'react'
 
 const useTitle = () => {
   const params = useMemo(() => {
@@ -14,12 +14,13 @@ const useTitle = () => {
     return tempParams
   }, [])
 
-  const title = useMemo(() => {
+  const [title, noun] = useMemo(() => {
     let title = ''
+    let noun = 'singular'
     if (Object.keys(params).find(p => p === 'name')) {
       let name = params.name
       let sex = params.sex
-      title += `Liebe${sex === 'm' ? 'r' : ''} ${name}.`
+      title += `Liebe${sex === 'm' ? 'r' : ''} ${name},`
     }
 
     if (Object.keys(params).find(p => p === 'names')) {
@@ -29,12 +30,13 @@ const useTitle = () => {
       names.forEach(
         (n, i) => (title += `Liebe${sex[i] === 'm' ? 'r' : ''} ${n}, `)
       )
+      noun = 'plural'
     }
 
-    return title
+    return [title, noun]
   }, [params])
 
-  return title
+  return { title, noun }
 }
 
 export default useTitle
