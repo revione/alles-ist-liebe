@@ -38,14 +38,15 @@ export const ContainerSeparator2 = styled.div`
   svg {
     transform: rotate(90deg) scale(2);
     width: 116px;
-    height: 100px;
+    height: 25px;
 
     @media (min-width: 500px) {
       transform: rotate(90deg) scale(2);
     }
 
     @media (max-width: 500px) {
-      transform: scale(2);
+      transform: scale(1.5);
+      height: 100px;
     }
   }
 
@@ -66,6 +67,23 @@ export const Left = styled.div`
   ul {
     padding-inline-start: 25px;
     margin: 0;
+  }
+
+  a {
+    background: #d8d8d8;
+    border-radius: 15px;
+    padding: 0 10px;
+    text-align: center;
+    padding-bottom: 2px;
+    text-decoration: none;
+    border: 1px solid;
+    margin-top: 15px;
+    transition-duration: 200ms;
+
+    &:hover,
+    &:active {
+      background: #c3c3c3;
+    }
   }
 `
 

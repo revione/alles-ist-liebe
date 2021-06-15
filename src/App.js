@@ -59,9 +59,18 @@ function App() {
       <MainContainer>
         <Left>
           {title && <h3>{title}</h3>}
-          {data.left.paragraph.map(text => (
-            <p key={Math.random() * 10}>{text}</p>
-          ))}
+          {data.left.paragraph.map(text => {
+            const regex = /href/
+            if (text.search(regex) > 0) {
+              let link = JSON.parse(text)
+              return (
+                <a href={link.href} target='_blank' rel='noreferrer'>
+                  {link.text}
+                </a>
+              )
+            }
+            return <p key={Math.random() * 10}>{text}</p>
+          })}
         </Left>
         <ContainerSeparator2>
           <Separator2 />
