@@ -13,6 +13,11 @@ export const MainContainer = styled.div`
   grid-template-columns: 1fr 10% 1fr;
   box-sizing: border-box;
   height: fit-content;
+
+  @media (max-width: 500px) {
+    display: flex;
+    flex-direction: column-reverse;
+  }
 `
 
 export const ContainerSelect = styled.div`
@@ -34,6 +39,18 @@ export const ContainerSeparator2 = styled.div`
     transform: rotate(90deg) scale(2);
     width: 116px;
     height: 100px;
+
+    @media (min-width: 500px) {
+      transform: rotate(90deg) scale(2);
+    }
+
+    @media (max-width: 500px) {
+      transform: scale(2);
+    }
+  }
+
+  @media (max-width: 500px) {
+    justify-content: center;
   }
 `
 
