@@ -1,13 +1,10 @@
-import { useState } from 'react'
 import { Helmet } from 'react-helmet'
-import Select from 'react-select'
 // helpers
 import useTitle from './helpers/useTitle'
 import useData from './helpers/useData'
 
 import {
   Main,
-  ContainerSelect,
   MainContainer,
   Left,
   Right,
@@ -17,16 +14,7 @@ import {
 } from './styles'
 import { ReactComponent as Separator1 } from './assets/separator1.svg'
 import { ReactComponent as Separator2 } from './assets/separator2.svg'
-import { ReactComponent as DeutscheFlag } from './assets/flags/germany.svg'
-import { ReactComponent as ColombiaFlag } from './assets/flags/colombia.svg'
-import { ReactComponent as UKFlag } from './assets/flags/united-kingdom.svg'
 import Leones from './assets/leones.png'
-
-// const options = [
-//   { value: 'deutsche', label: <DeutscheFlag /> },
-//   { value: 'spanish', label: <ColombiaFlag /> },
-//   { value: 'english', label: <UKFlag /> }
-// ]
 
 function App() {
   const data = useData()
@@ -45,16 +33,6 @@ function App() {
           rel='stylesheet'
         />
       </Helmet>
-
-      {/* <ContainerSelect>
-        <Select
-          name='language-select'
-          options={options}
-          defaultValue={options[0]}
-          isSearchable={false}
-          onChange={e => setLanguage(e.value)}
-        />
-      </ContainerSelect> */}
 
       <MainContainer>
         <Left>
